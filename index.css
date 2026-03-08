@@ -1,4 +1,32 @@
 body {
   font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  text-align: center;
+  padding: 40px;
+  margin: 0;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.weather-box {
+  background: white;
   padding: 20px;
+  border-radius: 8px;
+  width: 320px;
+  margin: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+p {
+  font-size: 18px;
+  margin: 15px 0;
+}
+
+@media (max-width: 600px) {
+  .weather-box {
+    width: 90%;
+  }
 }

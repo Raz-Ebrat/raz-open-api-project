@@ -3,16 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Open API Project</title>
 
-    <!-- linked CSS file -->
+    <!-- Page title -->
+    <title>My Weather App</title>
+
+    <!-- Link to CSS styling -->
     <link rel="stylesheet" href="index.css" />
   </head>
-  <body>
-    <h1>Open API Project</h1>
-    <p>Testing API fetch (check console)</p>
 
-    <!-- linked JavaScript file -->
+  <body>
+    <!-- Main heading for the page -->
+    <h1>Richmond Weather</h1>
+
+    <!-- Container for displaying weather information -->
+    <div class="weather-box">
+      <!-- Section: Current weather data from Open-Meteo API -->
+      <h2>Current Weather</h2>
+
+      <!-- Temperature will be inserted dynamically by JavaScript -->
+      <p>
+        Temperature:
+        <span id="temperature">Loading...</span>
+      </p>
+
+      <!-- Weather code returned by the API -->
+      <p>
+        Weather Code:
+        <span id="weather">Loading...</span>
+      </p>
+
+      <!-- Section: Forecast data (second API fetch) -->
+      <h2>Forecast Data</h2>
+
+      <!-- JavaScript will insert next hour temperature -->
+      <p>
+        Next Hour Temperature:
+        <span id="next-hour-temp">Loading...</span>
+      </p>
+    </div>
+
+    <!-- Link to JavaScript file that fetches weather data -->
     <script src="index.js"></script>
   </body>
 </html>

@@ -1,22 +1,44 @@
-// Open-Meteo test fetch (Richmond, VA approx)
-const url =
-  "https://api.open-meteo.com/v1/forecast?latitude=37.5407&longitude=-77.4360&current=temperature_2m,weather_code";
+// First fetch: current weather data
+const currentWeatherUrl =
+  "https://api.open-meteo.com/v1/forecast?latitude=37.54&longitude=-77.43&current=temperature_2m,weather_code";
 
-fetch(url)
+fetch(currentWeatherUrl)
   .then((response) => {
     if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
+      throw new Error("Failed to fetch current weather data");
     }
     return response.json();
   })
   .then((data) => {
-    console.log("API Response:", data);
-    // Two data points I can later display:
+    console.log("Current Weather Data:", data);
 
-    // data.current.temperature_2m
-    // data.current.weather_code
+    document.getElementById("temperature").innerText =
+      data.current.temperature_2m + " °C";
+
+    document.getElementById("weather").innerText = data.current.weather_code;
   })
   .catch((error) => {
-    console.error("Fetch failed:", error);
+    console.log("Error:", error);
   });
-console.log("JavaScript connected successfully");
+
+// Second fetch: hourly forecast data
+const forecastUrl =
+  "https://api.open-meteo.com/v1/forecast?latitude=37.54&longitude=-77.43&hourly=temperature_2m";
+
+fetch(forecastUrl)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Failed to fetch forecast data");
+    }
+    return response.json();
+  })
+  .then((data) => {
+    console.log("Forecast Data:", data);
+
+    // Show the next hour's temperature
+    document.getElementById("next-hour-temp").innerText =
+      data.hourly.temperature_2m[1] + " °C";
+  })
+  .catch((error) => {
+    console.log("Error:", error);
+  });
