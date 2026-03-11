@@ -1,48 +1,80 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Basic page metadata -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Page title -->
-    <title>My Weather App</title>
+    <title>Weather Comparison Project</title>
 
-    <!-- Link to CSS styling -->
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Link to CSS -->
     <link rel="stylesheet" href="index.css" />
   </head>
-
   <body>
-    <!-- Main heading for the page -->
-    <h1>Richmond Weather</h1>
+    <!-- Top navigation -->
+    <header class="site-header">
+      <nav class="navbar">
+        <div class="logo">☀️ WeatherScope</div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#project">API Project</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    <!-- Container for displaying weather information -->
-    <div class="weather-box">
-      <!-- Section: Current weather data from Open-Meteo API -->
-      <h2>Current Weather</h2>
+    <!-- Main content -->
+    <main class="page-container">
+      <!-- About section -->
+      <section id="about" class="card about-card">
+        <h1>Richmond & Kandahar Weather Comparison</h1>
+        <p class="subtitle">
+          A colorful Open API project using real-time weather and time data
+        </p>
+        <h2>About</h2>
+        <p>
+          This is my API Project built with the Open-Meteo API. This project
+          compares real-time weather and time information for
+          <strong>Richmond, Virginia</strong> and
+          <strong>Kandahar, Afghanistan</strong>.
+        </p>
+        <p>
+          I wanted to make the project more meaningful by comparing two places
+          from different parts of the world and presenting the data in a clean,
+          visually appealing way.
+        </p>
+      </section>
 
-      <!-- Temperature will be inserted dynamically by JavaScript -->
-      <p>
-        Temperature:
-        <span id="temperature">Loading...</span>
-      </p>
+      <!-- API project section -->
+      <section id="project" class="card project-card">
+        <h2>API Project</h2>
 
-      <!-- Weather code returned by the API -->
-      <p>
-        Weather Code:
-        <span id="weather">Loading...</span>
-      </p>
+        <div class="api-buttons">
+          <button id="show-temperature">Temperature Comparison</button>
+          <button id="show-conditions">Conditions & Time</button>
+        </div>
 
-      <!-- Section: Forecast data (second API fetch) -->
-      <h2>Forecast Data</h2>
+        <div id="api-results">
+          <p class="api-placeholder">Click a button to load weather data.</p>
+        </div>
+      </section>
+    </main>
 
-      <!-- JavaScript will insert next hour temperature -->
-      <p>
-        Next Hour Temperature:
-        <span id="next-hour-temp">Loading...</span>
-      </p>
-    </div>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>© 2026 ☀️ Open-Meteo | Raz Ebrat | CTD Open API Project</p>
+      </div>
+    </footer>
 
-    <!-- Link to JavaScript file that fetches weather data -->
+    <!-- Link to JavaScript -->
     <script src="index.js"></script>
   </body>
 </html>

@@ -1,32 +1,338 @@
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
-  text-align: center;
-  padding: 40px;
   margin: 0;
+  font-family: "Outfit", sans-serif;
+  background:
+    radial-gradient(circle at top left, #dff3ff 0%, transparent 30%),
+    radial-gradient(circle at top right, #ffe6f2 0%, transparent 30%),
+    linear-gradient(135deg, #eef5ff 0%, #f8fbff 45%, #eefaf4 100%);
+  color: #1f2d3d;
 }
 
-h1 {
-  color: #333;
-  margin-bottom: 30px;
+/* Header */
+.site-header {
+  padding: 22px 24px 10px;
 }
 
-.weather-box {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 320px;
-  margin: auto;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.navbar {
+  max-width: 1400px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #dbeafe, #e8f5ff, #f0fff7);
+  border-radius: 22px;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(20, 50, 100, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.7);
 }
 
-p {
-  font-size: 18px;
-  margin: 15px 0;
+.logo {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #163f7a;
+  letter-spacing: 0.4px;
 }
 
-@media (max-width: 600px) {
-  .weather-box {
-    width: 90%;
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #163f7a;
+  font-weight: 700;
+  font-size: 1.05rem;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #0c67c2;
+  transform: translateY(-2px);
+}
+
+/* Main container */
+.page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 24px 40px;
+}
+
+/* General card style */
+.card {
+  border-radius: 26px;
+  padding: 48px 36px;
+  margin-bottom: 26px;
+  box-shadow: 0 12px 30px rgba(15, 35, 95, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  animation: fadeUp 0.7s ease;
+}
+
+/* About card */
+.about-card {
+  background: linear-gradient(135deg, #fff9f3, #f8f5ff, #eff8ff);
+}
+
+.about-card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 2.7rem;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #163f7a, #0c67c2, #11a7b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 28px;
+  font-size: 1.1rem;
+  color: #51657e;
+  font-weight: 600;
+}
+
+.about-card h2,
+.project-card h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 28px;
+  font-size: 2rem;
+  background: linear-gradient(135deg, #163f7a, #0c67c2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-card p {
+  font-size: 1.18rem;
+  line-height: 1.9;
+  margin-bottom: 18px;
+}
+
+/* Project card */
+.project-card {
+  background: linear-gradient(135deg, #f4fff8, #eef8ff, #f9f6ff);
+}
+
+/* Endpoint buttons */
+.api-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.api-buttons button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #163f7a, #0c67c2);
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.api-buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(18, 61, 122, 0.18);
+}
+
+/* Results area */
+#api-results {
+  margin-top: 10px;
+}
+
+.api-placeholder {
+  text-align: center;
+  color: #5b6d82;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+/* Result cards */
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.result-card {
+  background: linear-gradient(135deg, #ffffff, #f8fbff);
+  border: 1px solid #dce8f5;
+  border-radius: 22px;
+  padding: 26px 20px;
+  box-shadow: 0 8px 18px rgba(18, 61, 122, 0.06);
+  text-align: center;
+}
+
+.result-card h3 {
+  margin-top: 0;
+  margin-bottom: 14px;
+  color: #163f7a;
+  font-size: 1.45rem;
+}
+
+.result-card p {
+  margin: 10px 0;
+  font-size: 1.08rem;
+  color: #2b3f57;
+  line-height: 1.6;
+}
+
+.highlight {
+  font-weight: 700;
+  color: #0c67c2;
+}
+
+/* Footer */
+.site-footer {
+  padding: 20px 24px 32px;
+}
+
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 18px 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(219, 234, 254, 0.9),
+    rgba(238, 248, 255, 0.92),
+    rgba(240, 255, 247, 0.9)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 22px;
+  box-shadow: 0 10px 24px rgba(18, 61, 122, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.footer-inner p {
+  margin: 0;
+  color: #163f7a;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease,
+    text-shadow 0.25s ease;
+}
+
+.footer-inner p:hover {
+  color: #0c67c2;
+  transform: translateY(-1px);
+  text-shadow: 0 0 10px rgba(12, 103, 194, 0.18);
+}
+
+/* Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .navbar {
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .about-card h1 {
+    font-size: 2rem;
+  }
+
+  .about-card h2,
+  .project-card h2 {
+    font-size: 1.7rem;
+  }
+
+  .about-card p {
+    font-size: 1.05rem;
+  }
+
+  .card {
+    padding: 34px 22px;
+  }
+
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .api-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .api-buttons button {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .site-header {
+    padding: 16px 12px 8px;
+  }
+
+  .page-container {
+    padding: 8px 12px 24px;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+  }
+
+  .nav-links {
+    gap: 14px;
+  }
+
+  .nav-links a {
+    font-size: 0.95rem;
+  }
+
+  .about-card h1 {
+    font-size: 1.7rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+}
+
+.weather-icon {
+  font-size: 3rem;
+  margin: 10px 0;
 }
